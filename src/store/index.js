@@ -1,3 +1,4 @@
+import * as employeesStore from '@/store/modules/employeesStore'
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -7,8 +8,11 @@ export default createStore({
   },
   mutations: {
   },
+
   actions: {
   },
+
   modules: {
+    employeesStore
   }
 })
