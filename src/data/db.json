@@ -42,42 +42,18 @@
     },
     {
       "name": "Asjad Ali",
-      "designation": "VueJS Developer",
-      "salary": 45645654,
-      "gender": "Male",
+      "designation": "React Developer",
+      "salary": 800000,
+      "gender": "Female",
       "status": "Not Completed",
       "id": 31
     },
     {
-      "name": "Asjad Ali WAtto",
-      "designation": "VueJS Developer",
-      "salary": 50000,
-      "gender": "Male",
-      "status": "Completed",
-      "id": 32
-    },
-    {
-      "name": "Raza",
-      "designation": "Graphic Desiginer",
-      "salary": 30000,
-      "gender": "Male",
-      "status": "Not Completed",
-      "id": 33
-    },
-    {
-      "name": "Usman Sarwar",
-      "designation": "Wordpress Developer",
-      "salary": 50000,
-      "gender": "Male",
-      "status": "Completed",
-      "id": 34
-    },
-    {
-      "name": "Muhammad Aftab",
+      "name": "Aftab",
       "designation": "CEO",
       "salary": 150000,
       "gender": "Male",
-      "status": "Completed",
+      "status": "Not Completed",
       "id": 35
     },
     {
@@ -95,6 +71,30 @@
       "gender": "Female",
       "status": "Not Completed",
       "id": 37
+    },
+    {
+      "name": "Ali",
+      "designation": "React Developer",
+      "salary": 50000,
+      "gender": "Male",
+      "status": "Completed",
+      "id": 38
+    },
+    {
+      "name": "Tahir Shahzad",
+      "designation": "SEO",
+      "salary": 30000,
+      "gender": "Male",
+      "status": "Not Completed",
+      "id": 39
+    },
+    {
+      "name": "Shiza",
+      "designation": "STO",
+      "salary": 45000,
+      "gender": "Female",
+      "status": "Completed",
+      "id": 40
     }
   ]
 }

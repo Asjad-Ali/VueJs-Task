@@ -6,7 +6,6 @@
           <b>Employees Record</b>
         </h3>
       </div>
-
       <div class="col-lg-8 col-12 ">
         <div class="row d-flex justify-content-end">
             <div class="col-md-6 col-8 mb-md-2">

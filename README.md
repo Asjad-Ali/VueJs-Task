@@ -4,7 +4,7 @@
 ```
 npm install
 ```
-## Start Json-server run this commond on cmd in project file
+## Start Json-server run this command on cmd in project file
 ```
 json-server --watch src/data/db.json
 ```
