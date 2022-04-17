@@ -28,7 +28,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 # Main Screen
-```
 ![Screenshot (140)](https://user-images.githubusercontent.com/92371450/163733370-ae7ee3af-c6c8-4e1b-91ee-6e446cd8fd02.png)
-```
 
