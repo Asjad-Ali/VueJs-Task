@@ -6,6 +6,7 @@
           <b>Employees Record</b>
         </h3>
       </div>
+
       <div class="col-lg-8 col-12 ">
         <div class="row d-flex justify-content-end">
             <div class="col-md-6 col-8 mb-md-2">
@@ -17,7 +18,7 @@
             </div>
             <div class="col-md-3 col-4 mb-md-2">
               <select class="form-select" id="selectType" @change="employeeStatus()">
-                <option :value="type.value" v-for="type in status" :key="type"
+                <option class="m-2" :value="type.value" v-for="type in status" :key="type"
                 >{{ type.value }}</option>
               </select>
             </div>
@@ -40,9 +41,9 @@
         <div class="app-card app-card-orders-table shadow-sm pa-lg-2 p-0">
           <div class="app-card-body ma-0 pa-0">
             <div class="table-responsive rounded-3">
-              <table class="table table-bordered  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
-                <thead>
-                  <tr class="table-dark">
+              <table class="table table-bordered position-relative  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
+                <thead class="position-sticky">
+                  <tr class="table-dark ">
                     <th class="cell">ID</th>
                     <th class="cell">Name</th>
                     <th class="cell">Designation</th>
@@ -149,7 +150,9 @@ const { useStore } = require("vuex");
       emp => {
        return emp.name.toLowerCase().includes(query) || 
        emp.designation.toLowerCase().includes(query) ||
-       emp.status.toLowerCase().slice(0, 3).includes(query.slice(0, 3))
+       emp.status.toLowerCase().slice(0, 3).includes(query.slice(0, 3)) ||
+       emp.gender.toLowerCase().slice(0, 3).includes(query.slice(0, 3))
+       
       }
     )
     
@@ -158,7 +161,9 @@ const { useStore } = require("vuex");
     const status = [
     {value:"All"},
     {value:"Completed"},
-    {value:"Not Completed"}
+    {value:"Not Completed"},
+    {value:"Male"},
+    {value:"Female"}
   ]
 
   onMounted(() => { 

@@ -71,6 +71,30 @@
       "gender": "Male",
       "status": "Completed",
       "id": 34
+    },
+    {
+      "name": "Muhammad Aftab",
+      "designation": "CEO",
+      "salary": 150000,
+      "gender": "Male",
+      "status": "Completed",
+      "id": 35
+    },
+    {
+      "name": "Saddique",
+      "designation": "CTO",
+      "salary": 120000,
+      "gender": "Male",
+      "status": "Completed",
+      "id": 36
+    },
+    {
+      "name": "Raheela",
+      "designation": "MRO",
+      "salary": 606000,
+      "gender": "Female",
+      "status": "Not Completed",
+      "id": 37
     }
   ]
 }
