@@ -4,9 +4,9 @@
 ```
 npm install
 ```
-## Start Json-server
+## Start Json-server run this commond on cmd in project file
 ```
-Run first time  so run this commond on cmd in project file for active json server   json-server --watch src/data/db.json
+json-server --watch src/data/db.json
 ```
 ### Compiles and hot-reloads for development
 ```
