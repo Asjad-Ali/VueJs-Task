@@ -27,6 +27,7 @@ export const  mutations = {
       const res = await axios.get("http://localhost:3000/employees")
       if(res.status == 200){
         commit("setAllEmployeesData",res.data)
+        localStorage.setItem("allEmployee",JSON.stringify(res.data))
       }else{
         console.log(res)
       }
@@ -39,6 +40,7 @@ export const  mutations = {
         toast.success("Employee deleted Successfully");
         const empData = ref(getters.getAllEmployeesData.filter(emp => emp.id != id) )
         commit("setAllEmployeesData",empData)
+        localStorage.setItem("allEmployee",JSON.stringify(empData.value))
       }else{
         toast.error("Employee deleted failure");
         console.log(res)
@@ -59,6 +61,7 @@ export const  mutations = {
         toast.success("Employee added Successfully");
         const empData = ref(getters.getAllEmployeesData)
         empData.value.push(res.data)
+        localStorage.setItem("allEmployee",JSON.stringify(empData.value))
       }
       else{
         toast.error("Employee added failure");
@@ -79,7 +82,8 @@ export const  mutations = {
       if(res.status == 200){
         toast.success("Employee updated Successfully");
         const empData = ref(getters.getAllEmployeesData.map(emp => emp.id==res.data.id ? {...res.data} : {...emp}))
-        commit("setAllEmployeesData",empData)
+        commit("setAllEmployeesData",empData.value)
+        localStorage.setItem("allEmployee",JSON.stringify(empData.value))
       }else{
         toast.error("Employee added failure");
         console.log(res)

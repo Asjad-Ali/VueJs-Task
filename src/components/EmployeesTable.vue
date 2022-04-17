@@ -1,15 +1,27 @@
 <template>
   <div class="container-xl p-2">
     <div class="row d-flex justify-content-between">
-      <div class="col-md-4 col-12 ">
-        <h2 class=" text-start">
-          Employees Record
-        </h2>
+      <div class="col-lg-4 col-12 mb-md-2">
+        <h3 class="text-start">
+          <b>Employees Record</b>
+        </h3>
       </div>
-      <div class="col-md-8 col-12 ">
+      <div class="col-lg-8 col-12 ">
         <div class="row d-flex justify-content-end">
-
-            <div class="col-md-auto col-12 text-right">
+            <div class="col-md-6 col-8 mb-md-2">
+              <input
+                type="text" id="search-orders" name="searchorders"
+                class="form-control search-orders"
+                v-model="searchData"
+                placeholder="Search by Name or Designation"  data-v-d1f2b3da=""/>
+            </div>
+            <div class="col-md-3 col-4 mb-md-2">
+              <select class="form-select" id="selectType" @change="employeeStatus()">
+                <option :value="type.value" v-for="type in status" :key="type"
+                >{{ type.value }}</option>
+              </select>
+            </div>
+            <div class="col-md-auto my-md-0 my-2 text-end col-12">
               <button aria-hidden="true"  data-bs-toggle="modal"
               data-bs-target="#addModal"  class="btn btn-primary ma-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square-fill me-1" viewBox="0 0 16 16">
@@ -25,9 +37,9 @@
       <div
         class="tab-pane fade show active"
         id="orders-all"  role="tabpanel"  aria-labelledby="orders-all-tab">
-        <div class="app-card app-card-orders-table shadow-sm pa-2">
+        <div class="app-card app-card-orders-table shadow-sm pa-lg-2 p-0">
           <div class="app-card-body ma-0 pa-0">
-            <div class="table-responsive">
+            <div class="table-responsive rounded-3">
               <table class="table table-bordered  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
                 <thead>
                   <tr class="table-dark">
@@ -42,7 +54,7 @@
                 </thead>
                 <tbody>
                   <tr :class="{'table-success': emp.status == 'Completed','table-danger': emp.status != 'Completed'}"
-                  v-for="emp in allEmployee" 
+                  v-for="emp in employeeData" 
                   :key="emp">
                     <td class="cell">{{ emp.id }}</td>
                     <td class="cell">{{ emp.name }}</td>
@@ -55,6 +67,7 @@
                     </td>
                     <td class="cell">{{ emp.status }}</td>
                     <td class="cell text-center">
+                      <div class="d-flex justify-content-center flex-md-row flex-column">
                       <span
                         data-bs-toggle="modal"
                         data-bs-target="#deleteModal"
@@ -62,7 +75,7 @@
                         <svg
                           @click="selectEmployee(emp)"
                           xmlns="http://www.w3.org/2000/svg"  width="18"  height="18"
-                          fill="currentColor"  class="bi bi-trash me-4 cursor-pointer text-danger"  viewBox="0 0 16 16">
+                          fill="currentColor"  class="bi bi-trash me-md-4 mb-md-0 mb-sm-1 cursor-pointer text-danger"  viewBox="0 0 16 16">
                           <path
                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                           <path
@@ -71,7 +84,7 @@
                           />
                         </svg>
                       </span>
-                      <span>
+                      <span  class="text-center">
                         <router-link to="/update_employee">
                         <svg
                           @click="selectEmployee(emp)"
@@ -86,14 +99,15 @@
                         </svg>
                        </router-link>
                       </span>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
               <div class="m-5 text-center" v-else>
+                <div v-show="!store.getters.getAllEmployeesData.length > 0" >
                   <h2> No Data exist</h2>
-                <div v-show="!store.getters.getAllEmployeesData == ''">
-                  <p>If run first time So start the <b>JSON server</b></p>
+                  <p>If you don't run first time So start the <b>JSON server</b></p>
                   <p><b>This Command:</b> "json-server --watch src/data/db.json"  run in command Prompt in project</p>
                 </div>
               </div>
@@ -106,23 +120,56 @@
 </template>
 
 <script setup>
+
 const { onMounted, ref, computed}=require("@vue/runtime-core");
 const { useStore } = require("vuex");
 
   const store = useStore();
+  const searchData = ref();
   const selectEmployee = (emp) => {
     store.dispatch("selectedEmployee",emp)
   }
-  var allEmployee = ref(computed(() => store.getters.getAllEmployeesData))
 
+  const employeeStatus = () => {
+    let type = document.getElementById("selectType").value
+    if(type == "All"){
+      type = ''
+      searchData.value = type
+    }else{
+      searchData.value = type
+    }
+  }
+  const employeeData = computed(() => {
+    console.log(searchData)
+    if(!store.getters.getAllEmployeesData.length || !searchData.value ){
+      return store.getters.getAllEmployeesData
+    }
+    const query = searchData.value.toLowerCase();
+    return store.getters.getAllEmployeesData.filter(
+      emp => {
+       return emp.name.toLowerCase().includes(query) || 
+       emp.designation.toLowerCase().includes(query) ||
+       emp.status.toLowerCase().slice(0, 3).includes(query.slice(0, 3))
+      }
+    )
+    
+  });
 
-
-
-
+    const status = [
+    {value:"All"},
+    {value:"Completed"},
+    {value:"Not Completed"}
+  ]
 
   onMounted(() => { 
-    store.dispatch("allEmployeesData");
+    store.dispatch("allEmployeesData")
+    .then((res) => {
+      if(res != 200){
+        employeeData.value = JSON.parse(localStorage.getItem("allEmployee"))
+      }
+    });
   });
+
 </script>
 
 <style scoped>

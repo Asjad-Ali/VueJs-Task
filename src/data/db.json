@@ -1,14 +1,6 @@
 {
   "employees": [
     {
-      "name": "Asjad Watto",
-      "designation": "VueJs Developer",
-      "salary": "30000",
-      "gender": "Male",
-      "status": "Not Completed",
-      "id": 4
-    },
-    {
       "name": "Asjad Ali",
       "designation": "VueJs",
       "salary": "50000",
@@ -19,7 +11,7 @@
     {
       "name": "Asjad Ali",
       "designation": "VueJs Developer",
-      "salary": 650540654,
+      "salary": 5645,
       "gender": "Male",
       "status": "Not Completed",
       "id": 23
@@ -50,18 +42,10 @@
     },
     {
       "name": "Asjad Ali",
-      "designation": "VueJS DeveloperVueJS Developer",
-      "salary": 45645645,
-      "gender": "Male",
-      "status": "Not Completed",
-      "id": 28
-    },
-    {
-      "name": "Asjad Ali",
       "designation": "VueJS Developer",
       "salary": 45645654,
       "gender": "Male",
-      "status": "Completed",
+      "status": "Not Completed",
       "id": 31
     },
     {
