@@ -30,3 +30,18 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Main Screen
 ![Screenshot (140)](https://user-images.githubusercontent.com/92371450/163733370-ae7ee3af-c6c8-4e1b-91ee-6e446cd8fd02.png)
 
+# Only Completed
+![Screenshot (141)](https://user-images.githubusercontent.com/92371450/163733420-22c66735-b113-48d3-8c91-8607e9158f54.png)
+
+# Only Not Completed
+![Screenshot (142)](https://user-images.githubusercontent.com/92371450/163733449-256a60fe-5c09-4de1-84a0-2814912792bd.png)
+
+# Add Employee Modal
+![Screenshot (147)](https://user-images.githubusercontent.com/92371450/163733499-0edbce68-27b4-420d-ae2c-b34198c9ed6b.png)
+
+# Delete Employee Modal
+![Screenshot (148)](https://user-images.githubusercontent.com/92371450/163733502-d4eaf42d-12dc-47e8-8d04-33b2a14512ec.png)
+
+# Update Employee Page
+![Screenshot (149)](https://user-images.githubusercontent.com/92371450/163733505-471ed305-17d2-4de7-9de6-6b898f18493d.png)
+
