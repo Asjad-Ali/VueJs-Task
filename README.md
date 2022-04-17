@@ -45,3 +45,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Update Employee Page
 ![Screenshot (149)](https://user-images.githubusercontent.com/92371450/163733505-471ed305-17d2-4de7-9de6-6b898f18493d.png)
 
+# Use LocalStoarge
+![Screenshot (150)](https://user-images.githubusercontent.com/92371450/163733582-5e5d0552-b727-422e-a111-a808dfa6e96a.png)
+
+# Use Json Server
+![Screenshot (152)](https://user-images.githubusercontent.com/92371450/163733585-8cac0428-876d-4790-bb05-678572672b62.png)
+
+
+
