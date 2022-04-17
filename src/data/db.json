@@ -1,19 +1,11 @@
 {
   "employees": [
     {
-      "name": "Asjad Ali",
-      "designation": "Angular Developer",
-      "salary": "30000",
-      "gender": "male",
-      "status": "completed",
-      "id": 3
-    },
-    {
       "name": "Asjad Watto",
       "designation": "VueJs Developer",
       "salary": "30000",
-      "gender": "male",
-      "status": "not completed",
+      "gender": "Male",
+      "status": "Not Completed",
       "id": 4
     },
     {
@@ -29,7 +21,7 @@
       "designation": "VueJs Developer",
       "salary": 650540654,
       "gender": "Male",
-      "status": "Completed",
+      "status": "Not Completed",
       "id": 23
     },
     {
@@ -53,7 +45,7 @@
       "designation": "VueJS Developer",
       "salary": 4144477,
       "gender": "Male",
-      "status": "Not Completed",
+      "status": "Completed",
       "id": 27
     },
     {
@@ -71,6 +63,30 @@
       "gender": "Male",
       "status": "Completed",
       "id": 31
+    },
+    {
+      "name": "Asjad Ali WAtto",
+      "designation": "VueJS Developer",
+      "salary": 50000,
+      "gender": "Male",
+      "status": "Completed",
+      "id": 32
+    },
+    {
+      "name": "Raza",
+      "designation": "Graphic Desiginer",
+      "salary": 30000,
+      "gender": "Male",
+      "status": "Not Completed",
+      "id": 33
+    },
+    {
+      "name": "Usman Sarwar",
+      "designation": "Wordpress Developer",
+      "salary": 50000,
+      "gender": "Male",
+      "status": "Completed",
+      "id": 34
     }
   ]
 }

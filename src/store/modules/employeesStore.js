@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
-
+import { useToast } from "vue-toastification";
+const toast = useToast();
 export const state = {
     allEmployees:[],
     selectedEmployee:{}
@@ -22,7 +23,6 @@ export const  mutations = {
   }
 
   export const  actions = {
-
     async allEmployeesData({commit}){
       const res = await axios.get("http://localhost:3000/employees")
       if(res.status == 200){
@@ -36,9 +36,11 @@ export const  mutations = {
     async deleteEmployee({commit, getters},id){
       const res = await axios.delete(`http://localhost:3000/employees/${id}`)
       if(res.status == 200){
+        toast.success("Employee deleted Successfully");
         const empData = ref(getters.getAllEmployeesData.filter(emp => emp.id != id) )
         commit("setAllEmployeesData",empData)
       }else{
+        toast.error("Employee deleted failure");
         console.log(res)
       }
       return res;
@@ -54,11 +56,12 @@ export const  mutations = {
       })
       
       if(res.status == 201){
-        console.log(res.data)
+        toast.success("Employee added Successfully");
         const empData = ref(getters.getAllEmployeesData)
-        console.log(empData.value)
         empData.value.push(res.data)
-      }else{
+      }
+      else{
+        toast.error("Employee added failure");
         console.log(res)
       }
       return res;
@@ -72,10 +75,13 @@ export const  mutations = {
       gender: payload.gender,
       status: payload.status,
       })
+
       if(res.status == 200){
+        toast.success("Employee updated Successfully");
         const empData = ref(getters.getAllEmployeesData.map(emp => emp.id==res.data.id ? {...res.data} : {...emp}))
         commit("setAllEmployeesData",empData)
       }else{
+        toast.error("Employee added failure");
         console.log(res)
       }
       return res;

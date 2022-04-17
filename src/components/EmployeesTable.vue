@@ -8,21 +8,12 @@
       </div>
       <div class="col-md-8 col-12 ">
         <div class="row d-flex justify-content-end">
-            <div class="col-md-6 col-8">
-              <input
-                type="text" id="search-orders" name="searchorders"
-                class="form-control search-orders"
-                placeholder="Search"  data-v-d1f2b3da=""/>
-            </div>
-            <div class="col-md-3 col-4">
-              <select class="form-select" data-v-d1f2b3da="">
-                <option value="1" data-v-d1f2b3da="">Completed</option>
-                <option value="0" data-v-d1f2b3da="">Not Completed</option>
-              </select>
-            </div>
+
             <div class="col-md-auto col-12 text-right">
               <button aria-hidden="true"  data-bs-toggle="modal"
               data-bs-target="#addModal"  class="btn btn-primary ma-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square-fill me-1" viewBox="0 0 16 16">
+              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/></svg>
                 Add Employee
               </button>
             </div>
@@ -37,9 +28,9 @@
         <div class="app-card app-card-orders-table shadow-sm pa-2">
           <div class="app-card-body ma-0 pa-0">
             <div class="table-responsive">
-              <table class="table app-table-hover mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
+              <table class="table table-bordered  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
                 <thead>
-                  <tr>
+                  <tr class="table-dark">
                     <th class="cell">ID</th>
                     <th class="cell">Name</th>
                     <th class="cell">Designation</th>
@@ -50,7 +41,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="emp in store.getters.getAllEmployeesData" :key="emp">
+                  <tr :class="{'table-success': emp.status == 'Completed','table-danger': emp.status != 'Completed'}"
+                  v-for="emp in allEmployee" 
+                  :key="emp">
                     <td class="cell">{{ emp.id }}</td>
                     <td class="cell">{{ emp.name }}</td>
                     <td class="cell">{{ emp.designation }}</td>
@@ -98,8 +91,8 @@
                 </tbody>
               </table>
               <div class="m-5 text-center" v-else>
-                <div v-show="!store.getters.getAllEmployeesData.length">
                   <h2> No Data exist</h2>
+                <div v-show="!store.getters.getAllEmployeesData == ''">
                   <p>If run first time So start the <b>JSON server</b></p>
                   <p><b>This Command:</b> "json-server --watch src/data/db.json"  run in command Prompt in project</p>
                 </div>
@@ -113,13 +106,16 @@
 </template>
 
 <script setup>
-const { onMounted}=require("@vue/runtime-core");
+const { onMounted, ref, computed}=require("@vue/runtime-core");
 const { useStore } = require("vuex");
 
   const store = useStore();
   const selectEmployee = (emp) => {
     store.dispatch("selectedEmployee",emp)
   }
+  var allEmployee = ref(computed(() => store.getters.getAllEmployeesData))
+
+
 
 
 

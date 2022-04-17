@@ -1,9 +1,9 @@
 <template>
     <div class="container text-center my-5">
-    <h1 class="my-5">Update Employee</h1>
+    <h1 class="my-5 "> <span class="border-bottom">Update Employee</span></h1>
     <div class="row">
         <div class="row d-flex justify-content-center ">
-          <div class="col-6 border p-5 rounded border-2">
+          <div class="col-6 border p-5 rounded shadow-sm border-2">
             <div class="row text-start mb-2">
               <div class="col-12 mb-3">
               <label>Name </label>
@@ -64,7 +64,7 @@
               </div>
               </div>
             </div> 
-            <div class="row">
+            <div class="row mt-3">
               <div>
                 <router-link to="/">
                   <button
@@ -86,16 +86,12 @@
 import { reactive, ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
 import { computed } from '@vue/runtime-core'
+import { useRouter } from 'vue-router'
 export default{
-  props:{
-    empData:{
-      type: Object,
-      required: true
-    }
-  },
-  setup(props){
-    const store = useStore()
-    console.log("Employee",props.empData)
+
+  setup(){
+    const store = useStore();
+    const router = useRouter();
       const emp = reactive({
             id: '',
             name: '',
@@ -106,7 +102,6 @@ export default{
       })
 
       const selectedEmployee = ref(computed(() => store.getters.getSelectedEmployee))
-      console.log("IN Update",selectedEmployee.value)
       emp.id = selectedEmployee.value.id
       emp.name = selectedEmployee.value.name
       emp.designation = selectedEmployee.value.designation
@@ -125,7 +120,12 @@ export default{
 
       const updateEmployee = () =>{
         console.log(emp)
-          store.dispatch("updateEmployeeData",emp);
+          store.dispatch("updateEmployeeData",emp)
+          .then((res) => {
+            if(res.status == 200){
+              router.push("/")
+            }
+          })
       }
     return{
       updateEmployee,
