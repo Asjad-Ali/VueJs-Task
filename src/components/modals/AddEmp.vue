@@ -8,7 +8,7 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog pa-4 modal-dialog-centered">
+    <div class="modal-dialog form pa-4 modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header d-flex justify-center">
           <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
@@ -23,6 +23,7 @@
                 name="name"
                 id="name"
                 class="form-control input-alignment"
+                required
               />
             </div>
             <div class="col-6 mb-3">
@@ -32,6 +33,7 @@
                 type="text"
                 class="form-control input-alignment"
                 name="Designation"
+                required
               />
             </div>
             <div class="col-6 mb-3">
@@ -41,6 +43,7 @@
                 type="number"
                 class="form-control input-alignment"
                 name="salary"
+                required
               />
             </div>
             <div class="col-6 mb-3">
@@ -48,6 +51,7 @@
                 <label> Gender</label>
                 <select
                   v-model="employee.gender" 
+                  required
                   class="form-select"
                   aria-label="Default select example"
                 >
@@ -62,6 +66,7 @@
                 <label> Status</label>
                 <select
                   v-model="employee.status"
+                  required
                   class="form-select"
                   aria-label="Default select example"
                 >
@@ -81,7 +86,7 @@
           >
             Close
           </button>
-          <button @click="addEmployee" data-bs-dismiss="modal" type="button" class="btn btn-primary text-white">Add Employee</button>
+          <button @click="addEmployee"  type="submit" class="btn btn-primary text-white">Add Employee</button>
         </div>
       </div>
     </div>
