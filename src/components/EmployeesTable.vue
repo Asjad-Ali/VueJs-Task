@@ -40,7 +40,7 @@
         <div class="app-card app-card-orders-table shadow-sm pa-lg-2 p-0">
           <div class="app-card-body ma-0 pa-0">
             <div class="table-responsive rounded-3">
-              <table class="table table-bordered position-relative  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
+              <table class="table align-middle table-bordered position-relative  table-hover table-light mb-0 text-left" v-if="store.getters.getAllEmployeesData.length">
                 <thead class="position-sticky">
                   <tr class="table-dark ">
                     <th class="cell">ID</th>
@@ -53,11 +53,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr :class="{'table-success': emp.status == 'Completed','table-danger': emp.status != 'Completed'}"
+                  <tr
+                  :class="{'table-success': emp.status == 'Completed',
+                  'table-danger': emp.status != 'Completed'}"
                   v-for="emp in employeeData" 
                   :key="emp">
                     <td class="cell">{{ emp.id }}</td>
-                    <td class="cell">{{ emp.name }}</td>
+                    <td class="cell">
+                      <div class="d-flex flex-column align-items-center">
+                        <div class="imageDiv">
+                          <img v-if="emp.image" :src="emp.image" alt="image">
+                          <img v-else src="../assets/profile.png" alt="alternative">
+                          </div>
+                        <div>{{ emp.name }}</div>
+                      </div>
+                    </td>
                     <td class="cell">{{ emp.designation }}</td>
                     <td class="cell">
                       <span class="note">Rs. {{ emp.salary }}</span>
@@ -177,5 +187,17 @@ const { useStore } = require("vuex");
 </script>
 
 <style scoped>
-
+.imageDiv{
+  display: inline-block;
+    height: 50px;
+    text-align: center;
+    width: 50px;
+    border-radius: 60px;
+}
+div > img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 40%;
+}
 </style>

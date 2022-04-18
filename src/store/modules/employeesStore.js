@@ -53,6 +53,7 @@ export const  mutations = {
       name: payload.name,
       designation: payload.designation,
       salary: payload.salary,
+      image: payload.image,
       gender: payload.gender,
       status: payload.status,
       })
